@@ -9,7 +9,7 @@ jobs:
   build-test-branch:
     name: "Build and Test Of PR"
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
 
