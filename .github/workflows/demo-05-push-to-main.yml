@@ -13,10 +13,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    uses: actions/checkout@v4
       
     - name: Setup .NET Core 5
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 5.0.x
     
@@ -43,7 +43,7 @@ jobs:
         dotnet publish "${{ github.workspace }}/mywebapp/src/mywebapp.csproj" -c Release -o mywebapp
     
     - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v2.2.0
+      uses: actions/upload-artifact@v4
       with:
         # Artifact name
         name: mywebappbuildartifacts
@@ -81,7 +81,7 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     
     - name: Download a Build Artifact
-      uses: actions/download-artifact@v2.0.8
+      uses: actions/download-artifact@v4
       with:
         # Artifact name
         name: 'mywebappbuildartifacts'
