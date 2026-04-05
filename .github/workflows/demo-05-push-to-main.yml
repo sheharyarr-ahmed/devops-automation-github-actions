@@ -34,7 +34,7 @@ jobs:
         if: success() || failure()
         with:
           name: XUnit Tests
-          path: ${{ github.workspace }}/mywebapp/tests/TestResults/*.trx
+          path: "**/TestResults/*.trx"
           reporter: dotnet-trx
 
       - name: Publish
