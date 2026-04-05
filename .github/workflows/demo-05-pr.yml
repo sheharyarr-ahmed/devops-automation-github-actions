@@ -42,7 +42,7 @@ jobs:
 
       - name: Publish
         run: |
-          dotnet publish "${{ github.workspace }}/mywebapp/src/mywebapp.csproj" -c Release -o mywebapp
+          dotnet publish "${{ github.workspace }}/mywebapp/src/mywebapp.csproj" -c Release -o mywebapp --no-build --no-restore
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v4
