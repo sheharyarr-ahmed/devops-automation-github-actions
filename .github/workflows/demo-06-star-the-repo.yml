@@ -7,14 +7,12 @@ on:
       - started
 
 jobs:
-
   change-the-bulb-color:
     name: Change the Demo Bulb Color
-    
+
     runs-on: ubuntu-latest
-    
+
     steps:
-    
       - name: Find Random Color
         id: find-random-color
         run: |
@@ -52,11 +50,12 @@ jobs:
               ;;
           esac
 
-          echo $RN
-          echo $COLOR
-          
-          echo "::set-output name=bulbcolor::$COLOR"
-    
-      - name: Change the bulb color
+          echo "Random number: $RN"
+          echo "Selected color: $COLOR"
+          echo "bulbcolor=$COLOR" >> "$GITHUB_OUTPUT"
+
+      - name: Simulate bulb color change
         run: |
-          curl -X PUT "https://api.lifx.com/v1/lights/${{ secrets.LIFX_DEMO_LIGHT_BULB }}/state" -H "Authorization: Bearer ${{ secrets.LIFX_PAT}}" -d "color=${{ steps.find-random-color.outputs.bulbcolor }}"
+          echo "Repository star event detected."
+          echo "Simulated bulb color change to: ${{ steps.find-random-color.outputs.bulbcolor }}"
+          echo "This demonstrates event-driven automation beyond traditional CI/CD."
