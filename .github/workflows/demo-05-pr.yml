@@ -33,12 +33,12 @@ jobs:
           dotnet test "${{ github.workspace }}/mywebapp/mywebapp.sln" --no-restore --verbosity normal --logger "trx;LogFileName=test-results.trx" --results-directory "${{ github.workspace }}/mywebapp/tests/TestResults"
 
       - name: Test Report
-        uses: dorny/test-reporter@v1
-        if: success() || failure()
+        uses: "dorny/test-reporter@v1"
+        if: ${{ success() || failure() }}
         with:
-          name: XUnit Tests
+          name: "XUnit Tests"
           path: "**/TestResults/*.trx"
-          reporter: dotnet-trx
+          reporter: "dotnet-trx"
 
       - name: Publish
         run: |
